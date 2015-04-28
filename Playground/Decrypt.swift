@@ -37,7 +37,7 @@ public class Decrypt: NSObject {
       Possible error scenarios to handle:
       Input string format
     */
-    static func decryptHexString(encryptedHexString: String, keyHexString: String) -> String {
+    static func decryptHexString(encryptedHexString: String, keyString: String) -> String {
         
         if (encryptedHexString.rangeOfString(":") == nil) {
             assert(false, "Invalid format for encryptedHexString")
@@ -51,14 +51,18 @@ public class Decrypt: NSObject {
         
         //128 bit initialization vector
         let ivBytes = hexByteStringToByteArray(ivAndEncrypted[0])
-
+        
         //`encryptedBytes` must be of length in multiples of 128 bits. If this is not met, an empty string will be returned
         //by this function
         let encryptedBytes = hexByteStringToByteArray(ivAndEncrypted[1])
         
-        //128 bit key
-        var keyBytes: [UInt8] = hexByteStringToByteArray(keyHexString)
-        
+        //Take a plain string, apply a SHA-256 hash to it to get a NSData object of just the right size - 256 bits
+        let keyData = (keyString as NSString).dataUsingEncoding(NSUTF8StringEncoding)?.sha256()
+        let count = keyData!.length / sizeof(UInt8)
+        //Converty key into [UInt8 format as expected by CryptoSwift
+        var keyBytes = [UInt8](count: count, repeatedValue: 0)
+        keyData!.getBytes(&keyBytes, length:count * sizeof(UInt8))
+
         //Encryption/decryption to be in AES, 128 bit, in Cipher Block Chaining mode
         let decrypted = AES(key: keyBytes, iv: ivBytes, blockMode: CipherBlockMode.CBC)?.decrypt(encryptedBytes, padding: PKCS7())
         

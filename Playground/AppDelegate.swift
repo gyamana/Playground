@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //      let encrypted = "8b99b66942f2d1724b2242ef7d16755b:57d10cc4f417871f95acbc9cb8056e5d"
 
-        let encrypted = "9401b2d4a94beb28a231adf7fe8577ca:6602b861f8ea732119bafddeef54605b15172cba03cbe29b3ea422446a9b46e6b4bebc5418c0bedb4afaf6367e475518883d7e3bbd806271fd550e4d2d1e78c78173b4a6e97538e04b17e713592c55edb836a0fb6ed0713b9a4992713a0829129a9116cb5d1c0b46c6a57e08302b88e3"
+        let encrypted = "062d01c237a140f1c036fb3855adb18e:1c666788a98a4eb3cf3e421de52bfad04491eb30a8904fb042630f668a56782df7dbc6369c4d2f3159ad06f42034ab2d3356595ac4feba9f6ea014ffbe6019e9b5f455a93c3f45b447a7835f0440eae147fb6a88f6866a015f9866bc29cd68842561b83d80fdf8603760f15cbfcb862d"
 
         let key = "FAC3104855E94B2AB7F51D5241EBF314"
-        println(Decrypt.decryptHexString(encrypted, keyHexString: key))
+        println(Decrypt.decryptHexString(encrypted, keyString: key))
         // Override point for customization after application launch.
         return true
     }
