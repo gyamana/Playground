@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//      let encrypted = "8b99b66942f2d1724b2242ef7d16755b:57d10cc4f417871f95acbc9cb8056e5d"
-
-        let encrypted = "062d01c237a140f1c036fb3855adb18e:1c666788a98a4eb3cf3e421de52bfad04491eb30a8904fb042630f668a56782df7dbc6369c4d2f3159ad06f42034ab2d3356595ac4feba9f6ea014ffbe6019e9b5f455a93c3f45b447a7835f0440eae147fb6a88f6866a015f9866bc29cd68842561b83d80fdf8603760f15cbfcb862d"
-
-        let key = "FAC3104855E94B2AB7F51D5241EBF314"
+        
+        let encrypted = "7b52e4a78b94f0d65a7edda603d59482:ffc11fc640a4d5bcb0215fab31ed166d8faf46e4e88d803caf2e78dd331109cb"
+        let key = "4877853790168452973"
+        
         println(Decrypt.decryptHexString(encrypted, keyString: key))
+        
         // Override point for customization after application launch.
         return true
     }
